@@ -42,4 +42,12 @@ class AudioController extends GetxController {
       await audioPlayer.resume();
     }
   }
+
+  handelSlider(double value) async {
+    final position = Duration(seconds: value.toInt());
+    await audioPlayer.seek(position);
+
+    // Optional: Play audio if was paused
+    await audioPlayer.resume();
+  }
 }

@@ -103,12 +103,8 @@ class _AudioPageState extends State<AudioPage> {
                   max: audioController.duration.value.inSeconds.toDouble(),
                   value: audioController.position.value.inSeconds.toDouble(),
                   activeColor: Colors.blueAccent,
-                  onChanged: (value) async {
-                    final position = Duration(seconds: value.toInt());
-                    await audioController.audioPlayer.seek(position);
-
-                    // Optional: Play audio if was paused
-                    await audioController.audioPlayer.resume();
+                  onChanged: (value) {
+                    audioController.handelSlider(value);
                   },
                 ),
               ),
